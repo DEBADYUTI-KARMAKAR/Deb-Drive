@@ -114,7 +114,32 @@
         persistFoldersToStorage();
     }
     function editFolder() {
-        
+        let divFolder = this.parentNode;
+        let divName = divFolder.querySelector("[purpose='name']");
+        let ofname = divName.innerHTML;
+
+        let nfname = prompt("Enter the new folder name");
+        if(!!nfname){
+            if(nfname != ofname ){
+                let exists = folders.some(f => f.name == nfname);
+                if (exists == false) {
+                    
+                    let folder = folders.find(f => f.name == ofname);
+                    folder.name = nfname;
+
+                    divName.innerHTML = nfname;
+
+                    saveToStorage();
+
+                }else{
+                    alert(nfname + " already exists")
+                }
+            } else{
+                alert("This is the old only enter something new")
+            }
+        }else{
+            alert("Please enter a name")
+        }        
     }
     function deleteFolder() {
         let divFolder = this.parentNode;
