@@ -132,13 +132,13 @@
                     saveToStorage();
 
                 }else{
-                    alert(nfname + " already exists")
+                    alert(nfname + " already exists");
                 }
             } else{
-                alert("This is the old only enter something new")
+                alert("This is the old only enter something new");
             }
         }else{
-            alert("Please enter a name")
+            alert("Please enter a name");
         }        
     }
     function deleteFolder() {
