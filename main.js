@@ -112,9 +112,9 @@
         let divFolderTemplate = pageTemplates.content.querySelector(".folder");
         let divFolder = document.importNode(divFolderTemplate, true);
 
-        let divName = divFolder.querySelector("[purpose='name'");
-        let spanEdit = divFolder.querySelector("[action='edit'");
-        let spanDelete = divFolder.querySelector("[action='delete'");
+        let divName = divFolder.querySelector("[purpose='name']");
+        let spanEdit = divFolder.querySelector("[action='edit']");
+        let spanDelete = divFolder.querySelector("[action='delete']");
 
 
         divFolder.setAttribute("fid",fid);
