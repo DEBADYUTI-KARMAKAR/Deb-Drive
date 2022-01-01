@@ -99,7 +99,19 @@
     btnAddFolder.addEventListener("click", addFolder);
 
     function addFolder() {
-        
+        let fname = prompt("Folder name?");
+        if(!fname){
+            return;
+        }
+
+        fid++;
+        addFolderInPage(fname, fid);
+
+        folders.push({
+            id: fid,
+            name: fname
+        });
+        persistFoldersToStorage();
     }
     function editFolder() {
         
@@ -126,6 +138,8 @@
     }
 
     function saveToStorage(){
+        let fjson = JSON.stringify(folders);
+        localStorage.setItem("data", fjson);
     }
 
     function loadFromStorage(){
