@@ -1,4 +1,4 @@
-(function(){
+/*(function(){
     let btnAddFolder = document.querySelector("#btnAddFolder");
     let divContainer = document.querySelector("#divContainer");
     let pageTemplates = document.querySelector("#pageTemplates");
@@ -87,4 +87,41 @@
     }
 
     loadFoldersFromStorage();
+})();
+*/
+
+(function(params) {
+    let btnAddFolder = document.querySelector("#btnAddFolder");
+    let divContainer = document.querySelector("#divContainer");
+    let pageTemplates = document.querySelector("#pageTemplates");
+    let folders = [];
+
+    btnAddFolder.addEventListener("click", addFolder);
+
+    function addFolder() {
+        
+    }
+    function editFolder() {
+        
+    }
+    function deleteFolder() {
+        
+    }
+
+    function addFolderHTML(fname, fid){
+    }
+
+    function saveToStorage(){
+    }
+
+    function loadFromStorage(){
+        let fjson = localStorage.getItem("data");
+        if(!!fjson){
+            folders = JSON.parse(fjson);
+            folders.forEach(f => addFolderHTML(f.name, f.id));
+        }
+    }
+
+    loadFromStorage();
+    
 })();
