@@ -109,6 +109,20 @@
     }
 
     function addFolderHTML(fname, fid){
+        let divFolderTemplate = pageTemplates.content.querySelector(".folder");
+        let divFolder = document.importNode(divFolderTemplate, true);
+
+        let divName = divFolder.querySelector("[purpose='name'");
+        let spanEdit = divFolder.querySelector("[action='edit'");
+        let spanDelete = divFolder.querySelector("[action='delete'");
+
+
+        divFolder.setAttribute("fid",fid);
+        divName.innerHTML = fname;
+        spanEdit.addEventListener("click", editFolder);
+        spanDelete.addEventListener("click", deleteFolder);
+
+        divContainer.appendChild(divFolder);
     }
 
     function saveToStorage(){
