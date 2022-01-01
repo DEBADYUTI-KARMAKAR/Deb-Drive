@@ -117,6 +117,20 @@
         
     }
     function deleteFolder() {
+        let divFolder = this.parentNode;
+        let divName = divFolder.querySelector("[purpose='name']");
+
+        let flag = confirm("Do you want to delete the folder " + divName.innerHTML);
+        if(flag == true){
+            //html
+            divContainer.removeChild(divFolder);
+            //ram
+            let idx = folders.findIndex(f => f.id == parseInt(divFolder.getAttribute("fid")));
+            folders.splice(idx, 1);
+
+            //storage
+            saveToStorage();
+        }
         
     }
 
