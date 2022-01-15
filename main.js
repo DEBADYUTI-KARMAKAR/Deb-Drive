@@ -1,9 +1,8 @@
-
 (function(){
     let btnAddFolder = document.querySelector("#addFolder");
     let btnAddTextFile = document.querySelector("#addTextFile");
     let divbreadcrumb = document.querySelector("#breadcrumb");
-    let aRootPath = divbreadcrumb.querySelector("a[purpose='path']")
+    let aRootPath = divbreadcrumb.querySelector("a[purpose='path']");
     let divContainer = document.querySelector("#container");
     let templates = document.querySelector("#templates");
     let resources = [];
@@ -12,8 +11,7 @@
 
     btnAddFolder.addEventListener("click", addFolder);
     btnAddTextFile.addEventListener("click", addTextFile);
-    aRootPath.addEventListener("click",viewFolderFromPath);
-    
+    aRootPath.addEventListener("click", viewFolderFromPath);
 
     // validation - unique, non-blank
     function addFolder(){
@@ -52,6 +50,7 @@
     }
 
     function deleteFolder(){
+        // delete all folders inside also
         let spanDelete = this;
         let divFolder = spanDelete.parentNode;
         let divName = divFolder.querySelector("[purpose='name']");
@@ -60,29 +59,31 @@
         let fname = divName.innerHTML;
 
         let sure = confirm(`Are you sure you want to delete ${fname}?`);
-        if (!sure) {
+        if(!sure){
             return;
         }
 
-        //html
+        // html
         divContainer.removeChild(divFolder);
-        //ram
+        // ram
         deleteHelper(fidTBD);
 
-        //storage
+        //  storage
         saveToStorage();
     }
-    function deleteHelper(fidTBD) {
+
+    function deleteHelper(fidTBD){
         let children = resources.filter(r => r.pid == fidTBD);
-        for(let i=0; i<children.length;i++){
-            deleteHelper(children[i].rid);
+        for(let i = 0; i < children.length; i++){
+            deleteHelper(children[i].rid); // this is capable of delete children and their children recursively
         }
-        let ridx = resources.findIndex(r => r.rid == fidTBD)
-        console.log(resources[ridx].rname);
-        resources.splice(ridx,1);
+
+        let ridx = resources.findIndex(r => r.rid == fidTBD);
+        resources.splice(ridx, 1);
     }
 
     function deleteTextFile(){
+        
 
     }
 
@@ -138,37 +139,40 @@
         let aPathTemplate = templates.content.querySelector("a[purpose='path']");
         let aPath = document.importNode(aPathTemplate, true);
 
-        aPath.innerHTML  = fname;
+        aPath.innerHTML = fname;
         aPath.setAttribute("rid", fid);
-        aPath.addEventListener("click",viewFolderFromPath);
+        aPath.addEventListener("click", viewFolderFromPath);
         divbreadcrumb.appendChild(aPath);
 
         cfid = fid;
-        divContainer.innerHTML= "";
-        for(let i =0;i<resources.length;i++){
-            if (resources[i].pid == cfid) {
-                addFolderHTML(resources[i].rname,resources[i].rid, resources[i].pid)
+        divContainer.innerHTML = "";
+        for(let i = 0; i < resources.length; i++){
+            if(resources[i].pid == cfid){
+                addFolderHTML(resources[i].rname, resources[i].rid, resources[i].pid);
             }
         }
     }
-    function viewFolderFromPath() {
+
+    function viewFolderFromPath(){
         let aPath = this;
         let fid = parseInt(aPath.getAttribute("rid"));
 
-        //set the breadcrumb
-        while (aPath.nextSibling) {
-            aPath.parentNode.removeChild(aPath.nextSibling)
-            
-        }
-        
-        cfid = fid;
-        divContainer.innerHTML= "";
-        for(let i =0;i<resources.length;i++){
-            if (resources[i].pid == cfid) {
-                addFolderHTML(resources[i].rname,resources[i].rid, resources[i].pid)
+        // set the breadcrumb
+        for(let i = divbreadcrumb.children.length - 1; i >= 0; i--){
+            if(divbreadcrumb.children[i] == aPath){
+                break;
             }
+            divbreadcrumb.removeChild(divbreadcrumb.children[i]);
         }
 
+        // set the container
+        cfid = fid;
+        divContainer.innerHTML = "";
+        for(let i = 0; i < resources.length; i++){
+            if(resources[i].pid == cfid){
+                addFolderHTML(resources[i].rname, resources[i].rid, resources[i].pid);
+            }
+        }
     }
 
     function viewTextFile(){
