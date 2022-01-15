@@ -3,6 +3,7 @@
     let btnAddFolder = document.querySelector("#addFolder");
     let btnAddTextFile = document.querySelector("#addTextFile");
     let divbreadcrumb = document.querySelector("#breadcrumb");
+    let aRootPath = divbreadcrumb.querySelector("a[purpose='path']")
     let divContainer = document.querySelector("#container");
     let templates = document.querySelector("#templates");
     let resources = [];
@@ -11,6 +12,8 @@
 
     btnAddFolder.addEventListener("click", addFolder);
     btnAddTextFile.addEventListener("click", addTextFile);
+    aRootPath.addEventListener("click",viewFolderFromPath);
+    
 
     // validation - unique, non-blank
     function addFolder(){
@@ -110,6 +113,7 @@
 
         aPath.innerHTML  = fname;
         aPath.setAttribute("rid", fid);
+        aPath.addEventListener("click",viewFolderFromPath);
         divbreadcrumb.appendChild(aPath);
 
         cfid = fid;
@@ -119,6 +123,25 @@
                 addFolderHTML(resources[i].rname,resources[i].rid, resources[i].pid)
             }
         }
+    }
+    function viewFolderFromPath() {
+        let aPath = this;
+        let fid = parseInt(aPath.getAttribute("rid"));
+
+        //set the breadcrumb
+        while (aPath.nextSibling) {
+            aPath.parentNode.removeChild(aPath.nextSibling)
+            
+        }
+        
+        cfid = fid;
+        divContainer.innerHTML= "";
+        for(let i =0;i<resources.length;i++){
+            if (resources[i].pid == cfid) {
+                addFolderHTML(resources[i].rname,resources[i].rid, resources[i].pid)
+            }
+        }
+
     }
 
     function viewTextFile(){
