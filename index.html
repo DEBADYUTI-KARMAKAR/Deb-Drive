@@ -1,27 +1,33 @@
-
 <html>
     <head>
-        <title>My first hands on frontend</title>
-        <link rel="stylesheet" href="style.css">
+        <title>My First Hand at Frontend</title>
+        <link rel="stylesheet" href="style.css" />
     </head>
-
     <body>
-        <button id="btnAddFolder">Add Folder</button>
-        <div id="divBreadCrumb">
-            <a class="path" fid="-1">Root</a>
+        <div id="header">
+            <button id="addFolder">Add Folder</button>
+            <button id="addTextFile">Add Text File</button>
         </div>
-        <div id="divContainer"></div>
 
-        <template id="pageTemplates">
-            <div class="folder">
-                <span action="edit">edit</span>
+        <div id="breadcrumb">
+            <h1>this is the breadcrumb</h1>
+        </div>
+
+        <div id="container">
+        </div>
+
+        <div id="app">
+            <h1>this is the area where app will show itself on a popup</h1>
+        </div>
+
+        <template id="templates">
+            <div class="folder" rid="" pid="">
+                <span action="rename">rename</span>
                 <span action="delete">delete</span>
                 <span action="view">view</span>
                 <div purpose="name"></div>
             </div>
-            <a class="path"></a>
         </template>
-
         <script type="text/javascript" src="main.js"></script>
     </body>
 </html>
