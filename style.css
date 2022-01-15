@@ -1,52 +1,59 @@
-#btnAddFolder {
-    border-radius: 5px;
-    background-color: azure;
-    width: 200px;
-    margin-left: 600px;
-    padding: 20px;
-    cursor: pointer;
-}
-
-#btnAddFolder:hover {
-    transform: scale(1.02);
-}
-
-#divBreadCrumb {
+#header{
     border: 1px solid black;
-    display: flex;
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-.path {
-    cursor: pointer;
-
-    background-color: gray;
-    color: black;
-
+    margin: 10px;
     padding: 10px;
-    border-right: 3px solid black;
-}
-
-.path:hover{
-    background-color: white;
-    color: blue;
-    text-decoration: underline;
-}
-
-#divContainer {
-    border: 1px solid black;
     display: flex;
-    margin-top: 10px;
+    justify-content: center;
 }
+
+#header button {
+    font-weight: 600;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+#header button:hover {
+    transform: scale(1.05);
+    background-color: lightyellow;
+}
+
+#breadcrumb{
+    border: 1px solid black;
+    margin: 10px;
+    padding: 10px;
+}
+
+#container{
+    border: 1px solid black;
+    margin: 10px;
+    padding: 10px;
+    display: flex;
+}
+
+#app{
+    border: 1px solid black;
+    margin: 10px;
+    padding: 10px;
+}
+
 
 .folder {
     background-color: teal;
-    border-radius: 5px;
-    height: 100px;
+    color:white;
+    height: 120px;
     width: 150px;
-    padding: 10px;
+
     margin: 10px;
+    padding: 10px;
+
+    border:2px solid red;
+    border-radius: 10px;
+}
+
+.folder div[purpose=name]{
+    margin-top: 80px;
 }
 
 .folder [action]{
@@ -54,7 +61,7 @@
     cursor: pointer;
 }
 
-div[purpose=name]{
-    margin-top: 50px;
-    color: white;
+.folder [action]:hover {
+    color: blue;
+    transform: scale(2);
 }
