@@ -98,7 +98,27 @@
     }
 
     function viewFolder(){
-        console.log("In view");
+        let spanView = this;
+        let divFolder = spanView.parentNode;
+        let divName = divFolder.querySelector("[purpose='name']");
+
+        let fname = divName.innerHTML;
+        let fid = parseInt(divFolder.getAttribute("rid"));
+
+        let aPathTemplate = templates.content.querySelector("a[purpose='path']");
+        let aPath = document.importNode(aPathTemplate, true);
+
+        aPath.innerHTML  = fname;
+        aPath.setAttribute("rid", fid);
+        divbreadcrumb.appendChild(aPath);
+
+        cfid = fid;
+        divContainer.innerHTML= "";
+        for(let i =0;i<resources.length;i++){
+            if (resources[i].pid == cfid) {
+                addFolderHTML(resources[i].rname,resources[i].rid, resources[i].pid)
+            }
+        }
     }
 
     function viewTextFile(){
