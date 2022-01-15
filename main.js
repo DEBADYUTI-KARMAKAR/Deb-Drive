@@ -52,7 +52,34 @@
     }
 
     function deleteFolder(){
-        console.log("In delete");
+        let spanDelete = this;
+        let divFolder = spanDelete.parentNode;
+        let divName = divFolder.querySelector("[purpose='name']");
+
+        let fidTBD = parseInt(divFolder.getAttribute("rid"));
+        let fname = divName.innerHTML;
+
+        let sure = confirm(`Are you sure you want to delete ${fname}?`);
+        if (!sure) {
+            return;
+        }
+
+        //html
+        divContainer.removeChild(divFolder);
+        //ram
+        deleteHelper(fidTBD);
+
+        //storage
+        saveToStorage();
+    }
+    function deleteHelper(fidTBD) {
+        let children = resources.filter(r => r.pid == fidTBD);
+        for(let i=0; i<children.length;i++){
+            deleteHelper(children[i].rid);
+        }
+        let ridx = resources.findIndex(r => r.rid == fidTBD)
+        console.log(resources[ridx].rname);
+        resources.splice(ridx,1);
     }
 
     function deleteTextFile(){
