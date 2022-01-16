@@ -109,6 +109,27 @@
     }
 
     function deleteTextFile(){
+        let spanDelete = this;
+        let divTextFile = spanDelete.parentNode;
+        let divName = divTextFile.querySelector("[purpose='name']");
+
+        let fidTBD = parseInt(divTextFile.getAttribute("rid"));
+        let fname = divName.innerHTML;
+
+        
+        let sure = confirm(`Are you sure you want to delete ${fname}?`);
+        if(!sure){
+            return;
+        }
+
+        // html
+        divContainer.removeChild(divTextFile);
+        // ram
+        let ridx = resources.findIndex(r => r.rid == fidTBD);
+        resources.splice(ridx,1);
+
+        //  storage
+        saveToStorage();
     }
 
     // empty, old, unique
@@ -149,6 +170,7 @@
     }
 
     function renameTextFile(){
+        
     }
 
     function viewFolder(){
