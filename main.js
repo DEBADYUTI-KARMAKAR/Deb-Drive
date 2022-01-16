@@ -170,7 +170,39 @@
     }
 
     function renameTextFile(){
-        
+        let nrname = prompt("Enter folder's name");
+        if(nrname != null){
+            nrname = nrname.trim();
+        }
+
+        if(!nrname){ // empty name validation
+            alert("Empty name is not allowed.");
+            return;
+        }
+
+        let spanRename = this;
+        let divTextFile = spanRename.parentNode;
+        let divName = divTextFile.querySelector("[purpose=name]");
+        let orname = divName.innerHTML;
+        let ridTBU = parseInt(divTextFile.getAttribute("rid"));
+        if(nrname == orname){
+            alert("Please enter a new name.");
+            return;
+        }
+
+        let alreadyExists = resources.some(r => r.rname == nrname && r.pid == cfid);
+        if(alreadyExists == true){
+            alert(nrname + " already exists.");
+            return;
+        }
+
+        // change html
+        divName.innerHTML = nrname;
+        // change ram
+        let resource = resources.find(r => r.rid == ridTBU);
+        resource.rname = nrname;
+        // change storage
+        saveToStorage();
     }
 
     function viewFolder(){
