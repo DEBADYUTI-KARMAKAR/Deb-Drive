@@ -1,7 +1,8 @@
+
 <html>
     <head>
         <title>My First Hand at Frontend</title>
-        <link rel="stylesheet" href="https://fonts.google.com/icons?selected=Material+Icons">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="style.css" />
     </head>
     <body>
@@ -19,11 +20,11 @@
 
         <div id="app">
             <div id="app-title-bar">
-                <div id="app-title">Title will come here</div>
+                <div id="app-title">title will come here</div>
                 <div id="win-actions">
-                    <span class="material-icons">Maximize</span>
-                    <span class="material-icons">Fullscreen</span>
-                    <span class="material-icons">Close</span>
+                    <span class="material-icons">minimize</span>
+                    <span class="material-icons">fullscreen</span>
+                    <span class="material-icons">close</span>
                 </div>
             </div>
             <div id="app-menu-bar"></div>
@@ -37,7 +38,6 @@
                 <span action="view">view</span>
                 <div purpose="name"></div>
             </div>
-            
             <div class="text-file" rid="" pid="">
                 <span action="rename">rename</span>
                 <span action="delete">delete</span>
@@ -45,8 +45,13 @@
                 <div purpose="name"></div>
             </div>
             <a purpose="path" rid="-1"></a>
+            <div purpose="notepad-menu" class="notepad-menu">
+                <p>I am the notepad's menu</p>
+            </div>
+            <div purpose="notepad-body" class="notepad-body">
+                <textarea>I am the notepad's body</textarea>
+            </div>
         </template>
-
         <script type="text/javascript" src="main.js"></script>
     </body>
 </html>
