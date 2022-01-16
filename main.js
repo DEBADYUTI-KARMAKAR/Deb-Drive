@@ -4,6 +4,13 @@
     let divbreadcrumb = document.querySelector("#breadcrumb");
     let aRootPath = divbreadcrumb.querySelector("a[purpose='path']");
     let divContainer = document.querySelector("#container");
+    
+    let divApp = document.querySelector("#app");
+    let divAppTitleBar = document.querySelector("#app-title-bar");
+    let divAppTitle = document.querySelector("#app-title");
+    let divAppMenuBar = document.querySelector("#app-menu-bar");
+    let divAppBody = document.querySelector("#app-body");
+
     let templates = document.querySelector("#templates");
     let resources = [];
     let cfid = -1; // initially we are at root (which has an id of -1)
@@ -116,7 +123,6 @@
         let fidTBD = parseInt(divTextFile.getAttribute("rid"));
         let fname = divName.innerHTML;
 
-        
         let sure = confirm(`Are you sure you want to delete ${fname}?`);
         if(!sure){
             return;
@@ -126,7 +132,7 @@
         divContainer.removeChild(divTextFile);
         // ram
         let ridx = resources.findIndex(r => r.rid == fidTBD);
-        resources.splice(ridx,1);
+        resources.splice(ridx, 1);
 
         //  storage
         saveToStorage();
@@ -170,7 +176,7 @@
     }
 
     function renameTextFile(){
-        let nrname = prompt("Enter folder's name");
+        let nrname = prompt("Enter file's name");
         if(nrname != null){
             nrname = nrname.trim();
         }
@@ -261,6 +267,23 @@
     }
 
     function viewTextFile(){
+        let spanView = this;
+        let divTextFile = spanView.parentNode;
+        let divName = divTextFile.querySelector("[purpose=name]");
+        let fname = divName.innerHTML;
+        let fid = parseInt(divTextFile.getAttribute("rid"));
+
+        let divNotepadMenuTemplate = templates.content.querySelector("[purpose=notepad-menu]");
+        let divNotepadMenu = document.importNode(divNotepadMenuTemplate, true);
+        divAppMenuBar.innerHTML = "";
+        divAppMenuBar.appendChild(divNotepadMenu);
+
+        let divNotepadBodyTemplate = templates.content.querySelector("[purpose=notepad-body]");
+        let divNotepadBody = document.importNode(divNotepadBodyTemplate, true);
+        divAppBody.innerHTML = "";
+        divAppBody.appendChild(divNotepadBody);
+
+        divAppTitle.innerHTML = fname;
     }
 
     function addFolderHTML(rname, rid, pid){
