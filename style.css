@@ -24,49 +24,24 @@
     margin: 10px;
     display: flex;
 }
+
 #breadcrumb a {
     background-color: tomato;
     padding: 10px;
-    border-right:5px solid black ;
+    border-right: 5px solid black;
 }
-#breadcrumb a:hover{
+
+#breadcrumb a:hover {
     background-color: teal;
     text-decoration: underline;
 }
+
 #container{
     border: 1px solid black;
     margin: 10px;
     padding: 10px;
     display: flex;
 }
-
-#app{
-    border: 1px solid black;
-    margin: 10px;
-    padding: 10px;
-}
-#app-title-bar{
-    display: flex;
-    background-color: cyan;
-    height: 40px;
-}
-#app-title{
-    width: 95%;
-    text-align: center;
-
-}
-#app-menu-bar{
-    display: flex;
-    background-color: teal;
-    height: 40px;
-
-}
-#app-body{
-    display: flex;
-    background-color: springgreen;
-    height: 500px;
-}
-
 
 .folder {
     background-color: teal;
@@ -95,22 +70,24 @@
     transform: scale(2);
 }
 
-.text-file{
+
+.text-file {
     background-color: lightcoral;
-    color: white;
+    color:white;
     height: 120px;
     width: 150px;
 
     margin: 10px;
     padding: 10px;
 
-    border: 2px solid red;
-    border-radius: 10px ;
+    border:2px solid red;
+    border-radius: 10px;
 }
 
 .text-file div[purpose=name]{
     margin-top: 80px;
 }
+
 .text-file [action]{
     text-decoration: underline;
     cursor: pointer;
@@ -119,4 +96,43 @@
 .text-file [action]:hover {
     color: blue;
     transform: scale(2);
+}
+
+#app{
+    border: 5px solid blue;
+    margin: 10px;
+}
+
+#app-title-bar {
+    display: flex;
+    background-color: cyan;
+    height: 40px;
+}
+
+#app-title {
+    width: 94%;
+    text-align: center;
+    border-right: 5px solid red;
+}
+
+#app-menu-bar {
+    display: flex;
+    background-color: teal;
+    height: 40px;
+}
+
+#app-body {
+    display: flex;
+    background-color:springgreen;
+    height: 500px;
+}
+
+.notepad-body {
+    height: 100%;
+    width: 100%;
+}
+
+.notepad-body textarea{
+    height: 100%;
+    width: 100%;
 }
