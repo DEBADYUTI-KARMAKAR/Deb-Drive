@@ -284,6 +284,54 @@
         divAppBody.appendChild(divNotepadBody);
 
         divAppTitle.innerHTML = fname;
+
+        let spanSave = divAppMenuBar.querySelector("[action=save]");
+        let spanBold = divAppMenuBar.querySelector("[action=bold]");
+        let spanItalic = divAppMenuBar.querySelector("[action=italic]");
+        let spanUnderline = divAppMenuBar.querySelector("[action=underline]");
+        let inputBGColor = divAppMenuBar.querySelector("[action=bg-color]");
+        let inputTextColor = divAppMenuBar.querySelector("[action=fg-color]");
+        let selectFontFamily = divAppMenuBar.querySelector("[action=font-family]");
+        let selectFontSize = divAppMenuBar.querySelector("[action=font-size]");
+
+        spanSave.addEventListener("click", saveNotepad);
+        spanBold.addEventListener("click", makeNotepadBold);
+        spanItalic.addEventListener("click", makeNotepadItalic);
+        spanUnderline.addEventListener("click", makeNotepadUnderline);
+        inputBGColor.addEventListener("change", changeNotepadBGColor);
+        inputTextColor.addEventListener("change", changeNotepadTextColor);
+        selectFontFamily.addEventListener("change", changeNotepadFontFamily);
+        selectFontSize.addEventListener("change", changeNotepadFontSize);
+    }
+
+    function saveNotepad(){ 
+    }
+
+    function makeNotepadBold(){ 
+    }
+
+    function makeNotepadItalic(){ 
+    }
+
+    function makeNotepadUnderline(){ 
+    }
+
+    function changeNotepadBGColor(){ 
+        let color = this.value;
+        let textArea = divAppBody.querySelector("textArea");
+        textArea.style.backgroundColor = color;
+    }
+
+    function changeNotepadTextColor(){ 
+        let color = this.value;
+        let textArea = divAppBody.querySelector("textArea");
+        textArea.style.color = color;
+    }
+
+    function changeNotepadFontFamily(){ 
+    }
+
+    function changeNotepadFontSize(){ 
     }
 
     function addFolderHTML(rname, rid, pid){
