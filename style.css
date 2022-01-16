@@ -45,6 +45,27 @@
     margin: 10px;
     padding: 10px;
 }
+#app-title-bar{
+    display: flex;
+    background-color: cyan;
+    height: 40px;
+}
+#app-title{
+    width: 95%;
+    text-align: center;
+
+}
+#app-menu-bar{
+    display: flex;
+    background-color: teal;
+    height: 40px;
+
+}
+#app-body{
+    display: flex;
+    background-color: springgreen;
+    height: 500px;
+}
 
 
 .folder {
